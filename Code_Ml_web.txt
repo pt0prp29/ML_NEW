@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Material Selection</title>
+    <link rel="stylesheet" href="Main.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css"/>
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+    <py-env>
+        - pandas
+        - scikit-learn
+        - matplotlib
+    </py-env>
+
+    <style>
+        body {
+            background-color: #0D1023;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="w3-sidebar w3-bar-block w3-black w3-card" style="width:110px">
+        <h5 class="w3-bar-item" style="margin-bottom: 550px;">Material Selection</h5>
+
+        <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Fade')">First</button>
+        <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Left')">Left</button>
+        <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Right')">Right</button>
+        <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Top')">Top</button>
+        <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Bottom')">Bottom</button>
+        <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Zoom')">Member</button>
+    </div>
+
+    <div style="margin-left:130px">
+        <div class="w3-padding" , id="head">Material Selection</div>
+        <p id="FO" style="margin-left: 180px;">Feature</p>
+        
+        <dia>
+            <label for="wide" style="color: white; margin-left : 300px;">Wide:</label>
+            <input type="number" id="wide" name="wide" size="20" step="0.001"><br><br>
+           
+            <label for="length" style="color: white; margin-left : 285px">Lenght:</label>
+            <input type="number" id="length" name="length" maxlength="4" size="20" step="0.001"><br><br>
+           
+            <label for="height" style="color: white; margin-left : 280px">Height:</label>ำ
+            <input type="number" id="height" name="height" maxlength="4" size="20" step="0.001"><br><br>
+           
+            <label for="force" style="color: white; margin-left : 298px" >Force:</label>
+            <input type="number" id="force" name="force" maxlength="4" size="20" step="0.001"><br><br>
+           
+            <label for="mass_density" style="color: white; margin-left : 279px">Mass Density:</label>
+            <input type="number" id="mass_density" name="mass_density" maxlength="4" size="20" step="0.001"><br><br>
+           
+            <label for="elastic_modulus" style="color: white; margin-left : 278px">Elastic Modulus:</label>
+            <input type="number" id="elastic_modulus" name="elastic_modulus" maxlength="4" size="20" step="0.001"><br><br>
+           
+            <label for="yield_strenght" style="color: white; margin-left : 235px">Yield Strenght:</label>
+            <input type="number" id="yield_strenght" name="yield_strenght" maxlength="4" size="20" step="0.001"><br><br>
+           
+            <label for="mass" style="color: white; margin-left : 218px">Mass:</label>
+            <input type="number" id="mass" name="mass" maxlength="4" size="20" step="0.001"><br><br>
+
+            <label for="volume" style="color: white; margin-left : 218px">Volume:</label>
+            <input type="number" id="volume" name="volume" maxlength="4" size="20" step="0.001"><br><br>
+
+            <label for="density" style="color: white; margin-left : 218px">Density:</label>
+            <input type="number" id="density" name="density" maxlength="4" size="20" step="0.001"><br><br>
+            
+            <button id="submit" pys-onclick="operation" style="margin-left : 600px; margin-bottom: 20px">Submit</button>0
+        </dia>
+        
+        <div>
+            <p id="display_stress" style="font-size: 50px; color: red;"></p>
+            <p id...........="display_stain" style="font-size: 50px; color: red;"></p>
+        </div>
+        <div id="Fade" class="w3-container city w3-animate-left" style="display:none">
+            <h2 id="Manu">Fade in</h2>
+            <p>London is the capital city of England.</p>
+            <p>It is the most populous city in the United Kingdom, with a metropolitan area of over 13 million
+                inhabitants.</p>
+        </div>
+
+        <div id="Left" class="w3-container city w3-animate-left" style="display:none">
+            <h2 id="Manu">Slide in from left</h2>
+            <p>Paris is the capital of France.</p>
+            <p>The Paris area is one of the largest population centers in Europe, with more than 12 million inhabitants.
+            </p>
+        </div>
+
+        <div id="Top" class="w3-container city w3-animate-left" style="display:none">
+            <h2 id="Manu">Slide in from top</h2>
+            <p>Tokyo is the capital of Japan.</p>
+            <p>It is the center of the Greater Tokyo Area, and the most populous metropolitan area in the world.</p>
+        </div>
+
+        <div id="Right" class="w3-container city w3-animate-left" style="display:none">
+            <h2 id="Manu">Slide in from right</h2>
+            <p>London is the capital city of England.</p>
+            <p>It is the most populous city in the United Kingdom, with a metropolitan area of over 13 million
+                inhabitants.</p>
+        </div>
+
+        <div id="Bottom" class="w3-container city w3-animate-left" style="display:none">
+            <h2 id="Manu">Slide in from bottom</h2>
+            <p>Paris is the capital of France.</p>
+            <p>The Paris area is one of the largest population centers in Europe, with more than 12 million inhabitants.
+            </p>
+        </div>
+
+        <div id="Zoom" class="w3-container city w3-animate-left" style="display:none">
+            <h2 id="Manu">Member group</h2>
+            <p id="member">643040248-0 Perraput Prakhummin</p>
+            <p id="member">643040235-9 Kittisak iedkaew</p>
+            <p id="member">643040650-7 Siwakorn Thaworn</p>
+        </div>
+
+    </div>
+
+    <script>
+        function openLink(evt, animName) {
+            var i, x, tablinks;
+            x = document.getElementsByClassName("city");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < x.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+            }
+            document.getElementById(animName).style.display = "block";
+            evt.currentTarget.className += " w3-red";
+        }
+    </script>
+    <py-script>
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.model_selection import cross_val_score, KFold
+from sklearn.neural_network import MLPRegressor
+from sklearn.preprocessing import StandardScaler
+from pyodide.http import open_url
+
+# อ่านข้อมูลจากไฟล์ ShapeOptimizationData.xlsx (เปลี่ยนเป็นไฟล์ .xlsx)
+url = open_url('https://raw.githubusercontent.com/pt0prp29/ML_NEW/main/data.csv')
+df = pd.read_csv(url)
+
+# กำหนด Features (คุณสมบัติ) และ Target (ผลลัพธ์)
+features = ['length', 'height', 'wide', 'weight']
+targets = ['Max Stress', 'Max Strain']
+
+X = df[features]
+y = df[targets]
+
+
+# กำหนด K-Fold Cross Validation
+kf = KFold(n_splits=5, shuffle=True, random_state=42)  # 5-fold cross-validation
+
+# ปรับสเกลข้อมูล Feature (คุณสมบัติ)
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# สร้างและฝึกโมเดล Neural Network (ANN) ด้วย K-Fold Cross Validation
+model = MLPRegressor(hidden_layer_sizes=(100, 50), max_iter=10000, random_state=42)
+model.fit(X_scaled, y)
+accuracy_scores = cross_val_score(model, X_scaled, y, cv=kf, scoring='r2')  # เลือกค่า R-squared
+
+# คำนวณค่าเฉลี่ยของความแม่นยำจาก K-Fold Cross Validation
+average_accuracy = accuracy_scores.mean()
+
+# แสดงค่า R-squared
+print(f'R-squared : {average_accuracy:.2f}')
+
+# กำหนดค่าของความยาว, ความสูง, ความหนา, และ น้ำหนัก
+#length = 3
+#height = 9
+#wide = 14
+#weight = 710
+
+def operation(*args, **kwargs):
+    length = Element('length').element.value
+    height = Element('height').element.value
+    wide = Element('wide').element.value
+    weight = Element('mass').element.value
+
+    # ทำนาย Max Stress และ Max Strain จากข้อมูลใหม่
+    new_data = [[length,height,wide,weight]]
+    new_data_scaled = scaler.transform(new_data)
+    predicted_values = model.predict(new_data_scaled)
+
+    
+    max_stress = predicted_values[0][0]
+    max_strain = predicted_values[0][1]
+
+    pyscript.write('display_stress', max_stress)
+    pyscript.write('display_stain', max_strain)
+    </py-script>
+</body>
+
+</html>
